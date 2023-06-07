@@ -1,0 +1,23 @@
+version: '3'
+services:
+        main:
+                build:
+                        context: .
+                        dockerfile: ./docker/Dockerfile
+                ports:
+                        - 8001:8001
+                depends_on:
+                        - postgres
+                restart: on-failure
+
+        postgres:
+                image: postgres:15-alpine
+                env_file:
+                        .env
+                ports:
+                        - "127.0.0.1:5432:5432"
+                volumes:
+                        - "postgres-db:/var/lib/postgresql/data"
+                restart: on-failure
+volumes:
+        postgres-db:

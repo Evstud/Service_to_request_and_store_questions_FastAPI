@@ -8,9 +8,8 @@ async def send_questions_num(num):
     params = {"questions_num": num}
     async with aiohttp.ClientSession() as session:
         async with session.post(url=url, json=params, headers=headers) as response:
-            response_json = await response.json()
-            print(response_json)
+            print(await response.json())
 
 
 if __name__ == "__main__":
-    asyncio.run(send_questions_num(5))
+    asyncio.run(send_questions_num(10))

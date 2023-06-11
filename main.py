@@ -115,8 +115,8 @@ async def main(model: Base, db: Session = Depends(get_db)):
             'question_date': new_question.question_date.strftime('%Y-%d-%m')
         } for new_question in db_questions]
         logger.info(f"{len(json_to_send)} questions are added to db")
-        return json.dumps(json_to_send)
-
+        # return json.dumps(json_to_send)
+        return json_to_send
 
 
 @app.get(
